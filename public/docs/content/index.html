@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Adding Content</title>
+        <script src="/docs/menu.js"></script>
+        <link rel="stylesheet" href="/docs/either.css" />
+    </head>
+    <body>
+        <docs-menu></docs-menu>
+        <div>
+            <input type="checkbox" />
+            <p>js</p>
+            <p>/</p>
+            <p>json</p>
+        </div>
+        <h1>Adding Content</h1>
+
+        <h3>Representing Game Objects</h3>
+        <p>
+            Wherever a game object (<code>Faction</code>, <code>Card</code>, <code>Dongle</code>,
+            <code>Text List</code>, ect.) appears it can be represented in two ways:
+        </p>
+        <ol>
+            <li>
+                <h4>Object Query</h4>
+                <p>
+                    An object with some or all of the object type's members. Every object of that type that matches all
+                    given members will have the operation applied to them. If no such object exists, a new one will be
+                    created, with reasonable defaults given to all missing members.
+                </p>
+            </li>
+            <li>
+                <h4>ID</h4>
+                <p>
+                    An id of a known object. If no object with the given id is found, an
+                    <code>ObjectNotFound</code> error will be thrown. An ID with a
+                    <code>[previously loaded mod name]:</code> suffix will look for the id as if the offered mod had
+                    just been loaded. Be sure to include that mod in your dependencies.
+                </p>
+            </li>
+        </ol>
+        <p>
+            Whenever an array of game objects appear they can be represented in one of two ways:
+        </p>
+        <ol>
+            <li>
+                <h4>Array</h4>
+                <p>List the objects one after the other.</p>
+            </li>
+            <li>
+                <h4>Map</h4>
+                <p>
+                    If an object is provided in place of an array, the object's keys will be used as the value's ids. If
+                    the value is a query covering multiple objects, a new object will be created instead. If the key
+                    already exists as an id, that id's object will be overwritten with the value's members. If the key
+                    already exists but the value is undefined, that id will be removed.
+                </p>
+            </li>
+        </ol>
+        <h3>Mass Content Additions</h3>
+        There are two kinds of <span class="js">parameters</span><span class="json">members</span> of a content adding
+        <span class="js">function</span><span class="json">object</span>:
+        <ol>
+            <li>
+                <em class="context">Context <span class="js">parameters</span><span class="json">members</span></em>
+            </li>
+            <li>
+                <em class="content">Content <span class="js">parameters</span><span class="json">members</span></em>
+            </li>
+        </ol>
+
+        <p>
+            <em class="context">Context</em>
+            <span class="js"><em class="context">parameters</em> appear at the start of the function,</span>
+            <span class="json"><em class="context">members</em> are described here,</span>
+            are named, and describe where the
+            <em class="content">content <span class="js">parameters</span><span class="json">members</span></em>
+            appear in game.
+            <em class="content">Content</em>
+            <span class="js"><em class="content">parameters</em> appear at the end of the function,</span>
+            <span class="json"
+                ><em class="content">members</em> appear in an array under a key the same name as the content adding
+                object,</span
+            >
+            and have no limit to the number added<span class="json">.</span><span class="js"> in one call.</span>
+        </p>
+        <p>
+            In order to accommodate large content modifications,
+            <em class="context">context <span class="js">parameters</span><span class="json">members</span></em>
+            can also be specified in between
+            <em class="content">content <span class="js">parameters</span><span class="json">members</span></em
+            >. To do so, do not set the
+            <em class="context">context <span class="js">parameters</span><span class="json">members</span></em>
+            to begin with. Instead,
+            <span class="js"
+                >wrap the object in another object, with the parameter names as keys, and the object under a
+                non-pluralized content name (eg. <code>card</code> for <code>addCards</code>).</span
+            >
+            <span class="json"
+                >wrap the content adding object in an array, and de-pluralize the
+                <em class="content">content</em> key.</span
+            >
+            Then add
+            <em class="content">content <span class="js">parameters</span><span class="json">members</span></em>
+            <span class="js">as normal.</span><span class="json">to the encompassing array.</span> Every subsequent
+            <em class="content">content <span class="js">parameter</span><span class="json">member</span></em>
+            will use those
+            <em class="context">context <span class="js">parameters</span><span class="json">members</span></em>
+            until they are overwritten in the same manner.
+        </p>
+        <h3>Something Went Wrong</h3>
+        <p>
+            If your mod throws an unhandled exception it will be treated as if it was never loaded in the first place.
+            Even <span class="js">calls made</span><span class="json">members defined</span> before the error will not
+            apply.
+        </p>
+
+        <h2>Table of Contents</h2>
+        <ul>
+            <li>
+                <a href="#factions">Factions</a>
+            </li>
+            <li>
+                <a href="#cards">Cards</a>
+                <ul>
+                    <li>
+                        <a href="#starting_commanders">Starting Commanders</a>
+                    </li>
+                    <li>
+                        <a href="#satarting_auxiliaries">Starting Auxiliaries</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#encounters">Encounters</a>
+                <ul>
+                    <li>
+                        <a href="#waves">Waves</a>
+                    </li>
+                    <li>
+                        <a href="#variants">Variants</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#text_lists">Text Lists</a>
+                <ul>
+                    <li>
+                        <a href="#contemper_insult_adjectives/">Contemper Insult Adjectives</a>
+                    </li>
+                    <li>
+                        <a href="#contemper_insult_nouns">Contemper Insult Nouns</a>
+                    </li>
+                    <li>
+                        <a href="#store_locations">Store Locations</a>
+                    </li>
+                    <li>
+                        <a href="#credits">Credits</a>
+                    </li>
+                    <li>
+                        <a href="#comms">Comms</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#behaviours">Base Game Behaviours</a>
+                <ul>
+                    <li>
+                        <a href="#unlock_conditions">Unlock Conditions</a>
+                    </li>
+                    <li>
+                        <a href="#dongles">Dongles</a>
+                        <ul>
+                            <li>
+                                <a href="#starting_flagship_dongles">Starting Flagship Dongles</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#fleet_upgrades">Fleet Upgrades</a>
+                        <ul>
+                            <li>
+                                <a href="#boss_reward_fleet_upgrades">Boss Reward Fleet Upgrades</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <h2 id="add_cards">
+            <code
+                ><span class="js">addCards(faction : Faction, additional_faction? : Faction, ...cards : Card[])</span
+                ><span class="json">cards: {faction : Faction, additional_faction : Faction, cards : []}</span></code
+            >
+        </h2>
+
+        <p>
+            Cards added by <code><span class="js">addCards</span><span class="json">cards</span></code> will appear as
+            rewards before encounters start, and in shops if they have <code>shop_loc</code> or
+            <code>shop_location</code> set.
+        </p>
+        <p>
+            Cards with the <code>flagship</code> effect will remove any other previous cards with the
+            <code>flagship</code> effect from the faction. These will not appear as rewards or in shops, but as starting
+            cards.
+        </p>
+        <p>Cards with the <code>commander</code> effect will not appear in shops.</p>
+
+        <h2 id="add_starting_commanders">
+            <code>
+                <span class="js"
+                    >addStartingCommanders(faction : Faction, cards : Card[], dongles : Dongle[], ...commanders :
+                    Card[])</span
+                >
+                <span class="json"
+                    >starting_commanders : {faction : Faction, cards : [], dongles : [], commanders : []}</span
+                >
+            </code>
+        </h2>
+
+        <h2 id="add_starting_flagship_dongles">
+            <code>
+                <span class="js">addStartingFlagshipDongles(faction?: Faction, ...dongles : Dongle[])</span>
+                <span class="json">starting_flagship_dongle : {faction?: Faction, dongles : []}</span>
+            </code>
+        </h2>
+
+        <h2 id="add_starting_auxiliaries">
+            <code>
+                <span class="js">addStartingAuxiliaries(faction : Faction, auxiliaries : Card[])</span>
+                <span class="json">starting_auxiliaries : {faction : Faction, auxiliaries : []}</span>
+            </code>
+        </h2>
+
+        <h2 id="add_encounters">
+            <code>addEncounters(encounter_pool : number, ...encounters : Encounter[])</code>
+        </h2>
+
+        <p>Encounters in <code>encounter_pool</code> 1 have an equally likely chance to be the first encounter</p>
+
+        <h2 id="add_coordinates">
+            <code>addCoordinates(...coordinates : Coordinate[])</code>
+        </h2>
+
+        <h2 id="add_dongles">
+            <code>addDongles(faction?: Faction, ...dongles : Dongle[])</code>
+        </h2>
+
+        <p>Dongles added by <code>addDongles</code> will appear as rewards before encounters start, and in shops.</p>
+
+        <h2 id="add_fleet_upgrades">
+            <code>addFleetUpgrades(faction?: Faction, ...fleet_upgrades : FleetUpgrades[])</code>
+        </h2>
+
+        <h2 id="add_boss_reward_fleet_upgrades">
+            <code>addBossRewardFleetUpgrades(...fleet_upgrades : FleetUpgrade[])</code>
+        </h2>
+
+        <h2 id="add_text_list">
+            <code>addTextList(list_name : string, ...elements : string[])</code>
+        </h2>
+
+        <p>
+            Edge case: Since subkeys are not a distinct type from elements, subkey must be specified within a js object.
+        </p>
+        <p>
+            <code>addTextList(list_name : string, ...elements : {subkey : string, element : string[])</code>
+        </p>
+
+        <h2 id="add_to_text_list">
+            <code>addToTextList(list_name : string, ...elements : string[])</code>
+        </h2>
+
+        <p>
+            Edge case: It's not possible to add elements to an existing array with this set up, so there is an extra
+            function to do so.
+        </p>
+        <p>
+            <code>addToTextList(list_name : string, ...elements : {subkey : string, element : string[])</code>
+        </p>
+        <p>Additionally, here are some helper functions for text lists that exist in the base game:</p>
+
+        <h3 id="add_to_contemper_insult_adjectives">
+            <code>addToContemperInsultAdjectives(...insults : string[])</code>
+        </h3>
+
+        <h3 id="add_to_contemper_insult_nouns">
+            <code>addToContemperInsultNouns(...insults : string[])</code>
+        </h3>
+
+        <h3 id="add_to_store_locations">
+            <code>addToStoreLocations(store_location : string, ...location_names : string[])</code>
+        </h3>
+
+        <h3 id="add_to_credits">
+            <code>addToCredits(category : string, ...credits : string[])</code>
+        </h3>
+
+        <h3 id="add_to_comms">
+            <code>addToComms(speaker : Faction | Card | string, event : string, ...comms : (string | string[])[])</code>
+        </h3>
+
+        <p>
+            For Factions, base game comm events include boarders_breach, boarders_success, boarders_fight, boarders_win,
+            security_arrive, security_success, security_fight, and security_win. For units, base game comm events
+            include deploy, orbit, target, attack, minor_damage, major_damage, select, and death. For Abilities, base
+            game comm events include pl, hos, and ally.
+        </p>
+    </body>
+</html>

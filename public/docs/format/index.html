@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mod Formats</title>
+    <script src="/docs/menu.js"></script>
+    <link rel="stylesheet" href="/docs/either.css" />
+  </head>
+  <body>
+    <docs-menu></docs-menu>
+    <div>
+      <input type="checkbox" />
+      <p>js</p>
+      <p>/</p>
+      <p>json</p>
+    </div>
+    <h1>Mod Formats</h1>
+
+    <p>Mods can be either a single file or a folder.</p>
+    <p>
+      Mod files can be either <code>.js</code> or <code>.json</code> files. To
+      switch which one the docs speak to, press the button in the top right
+      corner.
+    </p>
+
+    <p>
+      Mods must define a <code>metadata</code> object. If the mod is a folder,
+      all definitions must be in a file named <code>index</code>. If both
+      <code>index.js</code> and <code>index.json</code> exist and have a
+      metadata object, the one in <code>index.json</code> will be used. All
+      other objects from both files will also be used, but
+      <code>index.json</code> will apply first.
+    </p>
+
+    <h2>Metadata</h2>
+
+    <ul>
+      <li>
+        <code>name</code> (required): Name of the mod as it will appear in the
+        mod menu
+      </li>
+      <li>
+        <code>version</code> (required): Version of the mod for dependency
+        checking
+      </li>
+      <li>
+        <code>descr</code>: Short description of the mod as it will appear below
+        the name in the mod menu
+      </li>
+      <li>
+        <code>description</code>: Long description of the mod as it will appear
+        when clicked on in the mod menu
+      </li>
+      <li>
+        <code>dependencies</code>: Dictionary of names and minimum viable
+        versions of mods that should be loaded before this one
+      </li>
+      <li>
+        <code>seealso</code>: Dictionary of names and minimum viable versions of
+        mods that likely depend on this mod and would pair well with it
+      </li>
+    </ul>
+  </body>
+</html>

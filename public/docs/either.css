@@ -1,0 +1,104 @@
+docs-menu, #mod-menu {
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: fit-content;
+  overflow-y: scroll;
+  max-width: 20%;
+  position: fixed;
+}
+body:has(docs-menu) {
+  margin-left: calc(20% + 16px);
+}
+docs-menu nav, #mod_menu {
+  background-color: cadetblue;
+  min-height: 100%;
+  height: fit-content;
+}
+docs-menu nav menu {
+  margin: 0;
+  padding: 8px;
+}
+menu li {
+  list-style: none;
+}
+menu li:not(:last-child),menu li:has(menu),menu li:has(menu) > a{
+  border-bottom: groove;
+  border-color: darkcyan;
+}
+menu li menu {
+  background-color: darkcyan;
+}
+menu li li menu {
+  background-color: #097878;
+}
+div:has(input[type="checkbox"]) {
+  position: fixed;
+  height: 10%;
+  max-height: 64px;
+  aspect-ratio: 1;
+  right: 0;
+  top: 0;
+  margin: 16px;
+  background-color: darkcyan;
+  border: groove;
+  border-color: cadetblue;
+}
+div:has(input[type="checkbox"]) p {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  pointer-events: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  align-content: center;
+}
+div:has(input[type="checkbox"]) p:first-of-type {
+  margin-left: 4px;
+  left: 0;
+  top: 0;
+  color: aliceblue;
+  text-align: start;
+  height: auto;
+}
+div:has(input[type="checkbox"]) p:last-of-type {
+  left: 0;
+  bottom: 0;
+  text-align: end;
+  height: auto;
+}
+div:has(input[type="checkbox"]:checked) p:first-of-type {
+  color: black;
+}
+div:has(input[type="checkbox"]:checked) p:last-of-type {
+  color: aliceblue;
+}
+div input[type="checkbox"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+}
+body:has(input[type="checkbox"]:checked) .js {
+  display: none;
+}
+body:has(input[type="checkbox"]:not(:checked)) .json {
+  display: none;
+}
+em.context {
+  color: #99450c;
+}
+em.content {
+  color: #0e3d68;
+}
+:has(+ h2, + h3),
+body:last-child {
+  padding-bottom: 16px;
+  border-bottom: dotted;
+}
+:has(+ h3) {
+  border-width: 1px;
+}

@@ -1,0 +1,33 @@
+li.unimplemented::before {
+  background-image: url("unimplemented.svg");
+}
+li.flechette {
+  background-image: url("flechette.svg");
+}
+li.verifying {
+  background-image: url("verifying.svg");
+}
+li.complete {
+  background-image: url("complete.svg");
+}
+li::before {
+  content: "";
+  background-size: 16px;
+  display: inline-block;
+  margin-right: 8px;
+  height: 16px;
+  width: 16px;
+}
+li {
+  list-style: none;
+}
+ul {
+  padding-left: 8px;
+}
+img {
+  max-width: 32px;
+  max-height: 32px;
+}
+p[date]::before {
+  content: attr(date) ":";
+}

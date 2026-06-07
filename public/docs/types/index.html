@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Types</title>
+        <script src="/docs/menu.js"></script>
+        <link rel="stylesheet" href="/docs/either.css" />
+    </head>
+    <body>
+        <docs-menu></docs-menu>
+        <h2>Types</h2>
+
+        <p>Any field to another type can be filled with the specified type or an id.</p>
+        <p>
+            If a proxy field is overwritten, the field it is a proxy for will also be overwritten even the overridee and
+            the overrider use diffrent variables.
+        </p>
+
+        <h3>Sprite</h3>
+
+        <p>
+            Sprites fields can either be a realative file path or a file name. If the file name spesified does not exist
+            in the current mods folder, every previously loaded mod's folder will be checked in order. If no file is
+            found, the function consuming this object will throw a <code>NullRefrenceException</code>
+        </p>
+
+        <h3>Faction</h3>
+
+        <p>
+            Ids are the faction short names, eg <code>flo</code> for Flotiods. Factions are unique for holding their ids
+            as members.
+        </p>
+
+        <h4>Members</h4>
+
+        <ul>
+            <li><code>name</code>: string</li>
+            <li><code>short_name</code>: string</li>
+            <li><code>color</code>: [number, number, number]</li>
+            <li><code>default_portrait</code>: Sprite[]</li>
+            <li><code>commander_background</code>: Sprite</li>
+            <li><code>holo_unit_border</code>: Sprite</li>
+            <li><code>holo_ability_border</code>: Sprite</li>
+        </ul>
+
+        <h3>Card</h3>
+
+        <p>
+            When unspescified, Ids are of the format
+            <code>[pl or hos]_[faction_id]_[subtype]_[snake case card name]</code>
+        </p>
+
+        <h4>Members</h4>
+
+        <ul>
+            <li><code>name</code>: string</li>
+            <li><code>damage</code> or <code>dmg</code>: number</li>
+            <li>
+                <code>faction</code>: Faction (defaults to the faction of the calling function, or "gp" if none exists)
+            </li>
+            <li><code>attacks</code>: number (defaults to 1)</li>
+            <li><code>por_obj</code>: string (defaults to <code>obj_[subtype]_[faction.short_name]</code>)</li>
+            <li><code>sprites</code>: Sprite[] (defaults to <code>[card id]_*.png</code>)</li>
+            <li><code>background_sprite</code>: Sprite or <code>por_back</code> : "cp_[string]";</li>
+            <li><code>sprite_rotation</code> or <code>por_angle</code>: number (defaults to 0)</li>
+            <li><code>sprite_scale</code> or <code>por_scale</code>: number (defaults to 1)</li>
+            <li><code>sprite_shake_rate</code> or <code>por_repos_rate</code>: number (defaluts to 0)</li>
+            <li><code>sprite_shake_range</code> or <code>por_repos_range</code>: number (defaults to 0)</li>
+            <li><code>delayed_effect_time</code>: number (defaults to 0)</li>
+            <li><code>target_update_delay</code>: number (defaults to 0)</li>
+            <li><code>datacloud_entry_text?</code> or <code>data</code>: string (defaults to "0"/undefined)</li>
+            <li><code>datacloud_unlock_condition?</code> or <code>dc_cond?</code>: UnlockCondition</li>
+            <li><code>effect_count</code>: number (defaults to <code>effects.length</code>)</li>
+            <li><code>effects</code>: BaseGameCardEffect[];</li>
+        </ul>
+        <p>Subtypes of card will have aditional members:</p>
+
+        <h4>Ability</h4>
+
+        <h5>Members</h5>
+
+        <ul>
+            <li>
+                <code>attach_mount_type?</code> or <code>ab_attach_mount_type?</code>: number; //TODO Switch from id to
+                object
+            </li>
+            <li>
+                <code>attach_animation?</code> or <code>ab_attach_anim?</code>: string; //TODO Switch from id to object
+            </li>
+            <li><code>type?</code> or <code>ab_type?</code>: number;</li>
+            <li><code>target</code> or <code>ab_target?</code>: number;</li>
+            <li><code>player_comms?</code> or <code>ab_comms_pl?</code>: string[][] | TextListID;</li>
+            <li><code>ally_comms?</code> or <code>ab_comms_ally?</code>: string[][] | TextListID;</li>
+            <li><code>hostile_comms?</code> or <code>ab_comms_hos?</code>: string[][] | TextListID;</li>
+            <li><code>speaker?</code>: string;</li>
+            <li><code>store_location</code>: string[] | TextListID;</li>
+            <li><code>deck_priority</code> or <code>deck_group</code> : number (defaults to Infinity)</li>
+        </ul>
+
+        <h4>Unit</h4>
+
+        <h5>Members</h5>
+
+        <ul>
+            <li><code>hull</code> or <code>hp</code>: number;</li>
+            <li><code>timer</code>: number;</li>
+            <li><code>orbital_size</code> or <code>size</code>: 1 | 2 | 3;</li>
+            <li><code>death_effect_power</code> or <code>death_fx_power</code> : number (defaults to 1)</li>
+            <li><code>jump_fx?</code>: 1 | 2 | 3 | 4;</li>
+            <li><code>gun_mounts?</code>: number;</li>
+            <li><code>death_time_max?</code>: number;</li>
+            <li><code>comms?</code> or <code>comms_speaker_type?</code>: string;</li>
+            <li><code>srm_drop?</code>: number</li>
+        </ul>
+        <p>Aditionlly, units the player can obtain will have</p>
+        <ul>
+            <li><code>store_loc</code>: string;</li>
+            <li><code>deck_priority</code> or <code>deck_group</code>: number (defaults to Infinity)</li>
+        </ul>
+        <p>And also, bosses may have</p>
+        <ul>
+            <li><code>boss_upgrade</code> or <code>boss_up</code>: Dongle;</li>
+        </ul>
+        <p>Finally, enemies that appear in endless mode will have</p>
+        <ul>
+            <li><code>endless_mode_name</code> or <code>name_gp</code>: string;</li>
+            <li><code>endless_mode_upgrade</code> or <code>up_gp</code>: Dongle;</li>
+        </ul>
+
+        <h3>Encounter</h3>
+
+        <p>When unspesifed, ids are of format <code>enc_[faction id or "gp"]_[snake case encounter name]</code></p>
+
+        <h4>Members</h4>
+
+        <ul>
+            <li><code>name</code>: string;</li>
+            <li><code>comms</code>: string[][] | TextListID;</li>
+            <li><code>waves</code>: Wave[] = [];</li>
+        </ul>
+
+        <h4>Wave Members</h4>
+
+        <ul>
+            <li><code>music?</code>: FilePath or <code>wave_music?</code> : number</li>
+            <li><code>screen_text</code> or <code>wave_screen_text</code>: string</li>
+            <li><code>wave_rand</code>: number (defaults to <code>variaints.length</code>)</li>
+            <li><code>varaiants</code>: Variant[]</li>
+        </ul>
+
+        <h4>Variant</h4>
+
+        <p>
+            Either an array of Unit[] where element 0 appears on orbit 3, 1 on orbit 2 and so on, or a js object whose
+            values are of Unit and whose keys are of the fromat <code>o[orbit number]_unit[unit_number]</code>
+        </p>
+
+        <h3>Dongle</h3>
+
+        <h3>FleetUpgrade</h3>
+
+        <h3>Coordinate</h3>
+
+        <h3>UnlockConditon</h3>
+    </body>
+</html>
