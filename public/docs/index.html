@@ -1,13 +1,21 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Title</title>
-        <script src="/docs/menu.js"></script>
-        <link rel="stylesheet" href="/docs/either.css" />
-    </head>
-    <body>
-        <docs-menu></docs-menu>
-        <h1>Getting Started</h1>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Startup Guide and Helpful Scripts</title>
+    <script src="/docs/menu.js"></script>
+    <script src="./helpfulscripts.js"></script>
+    <link rel="stylesheet" href="/docs/either.css" />
+  </head>
+  <body>
+    <docs-menu></docs-menu>
+    <h1>Getting Started</h1>
+    <h2>Helpful Scripts</h2>
+    <h3>Comment Code0.js</h3>
+    <label for="code0">Code0.js:</label>
+    <input type="file" id="code0" accept=".js" />
+    <label for="data">Data.js:</label>
+    <input type="file" id="data" accept=".js" />
+    <input type="button" onclick="commentCode0()" />
+  </body>
 </html>
