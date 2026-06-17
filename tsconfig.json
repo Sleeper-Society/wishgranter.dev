@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "rootDir": "./public",
+    "module": "nodenext",
+    "target": "esnext",
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
+    "sourceMap": true,
+    "allowJs": false,
+    "checkJs": false,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "strict": true,
+    "noUncheckedSideEffectImports": true,
+    "rewriteRelativeImportExtensions": true,
+    "skipLibCheck": true
+  }
+}

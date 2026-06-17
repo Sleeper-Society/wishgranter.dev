@@ -1,0 +1,52 @@
+body {
+    --border-ui-color: cadetblue;
+}
+
+#docs-menu {
+    height: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: fit-content;
+    overflow-y: scroll;
+    max-width: 20%;
+    position: fixed;
+}
+
+body:has(#docs-menu) {
+    margin-left: calc(20% + 16px);
+}
+
+body:has(#docs-menu) header {
+    margin-left: -16px;
+}
+
+nav#docs-menu {
+    background-color: var(--border-ui-color);
+    min-height: 100%;
+    height: fit-content;
+}
+
+#docs-menu nav menu {
+    margin: 0;
+    padding: 8px;
+}
+
+#docs-menu menu li {
+    list-style: none;
+}
+
+#docs-menu menu li:has(menu),
+#docs-menu menu li:has(menu) > a,
+#docs-menu menu li:not(:last-child) {
+    border-bottom: groove;
+    border-color: darkcyan;
+}
+
+#docs-menu menu li menu {
+    background-color: darkcyan;
+}
+
+#docs-menu menu li li menu {
+    background-color: #097878;
+}

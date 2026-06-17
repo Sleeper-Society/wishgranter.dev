@@ -17,6 +17,13 @@ jobs:
     steps:
     # The checkout step copies your repo into the action runner. Important!
     - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+    - name: Install dependencies
+      run: npm ci
+    - name: Build Website
+      run: npm run build
     # When the dist_dir is ready, deploy it to neocities
     # Here we deploy the folder named `public`
     - name: Deploy to neocities

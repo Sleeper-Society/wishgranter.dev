@@ -3,74 +3,38 @@
     <head>
         <meta charset="UTF-8" />
         <title>Wishgranter</title>
-        <link rel="stylesheet" href="index.css">
+        <script src="/header.js" type="module"></script>
+        <link rel="icon" href="favicon.svg" />
+        <link rel="stylesheet" href="index.css" />
+        <style>
+            :not(header) a img {
+                height: 32px;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hyperspace Deck Command: Wishgranter</h1>
+        <h2>Download:</h2>
         <p>
-            Wishgranter is a modloader for
-            <a href="https://store.steampowered.com/app/2711190/Hyperspace_Deck_Command/" rel="nofollow"
-                >Sleeper Games' <em>Hyperspace Deck Command</em></a
-            >. It works by loading the base games files with a seperate electron application, adding a number of hooks
-            and changing the way loading resources works to allow definition chaining, then reading some number of mod
-            files to add extra content.
+            <a
+                href="https://github.com/Sleeper-Society/HDC-Wishgranter/releases/latest/download/wishgranter-win32-x64.zip"
+                ><img src="https://www.microsoft.com/favicon.ico?v2"
+            /></a>
+            <a
+                href="https://github.com/Sleeper-Society/HDC-Wishgranter/releases/latest/download/wishgranter-linux-x64.zip"
+                ><img
+                    src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/linux/default.svg"
+                    alt="Linux"
+            /></a>
         </p>
-        <h2>Installation</h2>
+        <h2>Get Hyperspace Deck Command:</h2>
         <p>
-            <a href="https://hdc.wishgranter.dev/downloads/stable/windows">Windows</a>
-            <a href="https://hdc.wishgranter.dev/downloads/stable/linux">Linux</a>
+            <a
+                href="https://store.steampowered.com/app/2711190/Hyperspace_Deck_Command/"
+                ><img src="https://store.steampowered.com/favicon.ico"
+            /></a>
+            <a href="https://sleeper-games.itch.io/hyperspace-deck-command"
+                ><img src="https://itch.io/favicon.ico"
+            /></a>
         </p>
-        <h2>Mods</h2>
-        <p>
-            When mods are made, they may be posted here.
-        </p>
-        <h2>Mod Creation</h2>
-        <p>
-            A thourogh documentation can be found <a href="/docs/">here</a>
-        </p>
-        <h2>Contributions</h2>
-        <p>
-            Wishgranter is a hobby project - maybe it could be your hobby too! Wishgranter is 
-            <a href="https://github.com/Hederarch/HDC-Modloader">open source</a>
-            and willing to review new pull requests.
-        </p>
-        <p>
-            Here are a list of features, and their status. 
-            Pick something unimplemented and give it a whirl!
-        </p>
-        <p>
-            Legend: 
-            <img src="unimplemented.svg"> = Unimplemented
-            <img src="flechette.svg"> = Assigned to Flechette
-            <img src="verifying.svg"> = Waiting for verification
-            <img src="complete.svg"> = Finished
-        </p>
-        <ul>
-            <li class="unimplemented">Js Mod loading</li>
-            <li class="unimplemented">Json Mod loading</li>
-            <li class="unimplemented">Zip Mod loading</li>
-            <li class="unimplemented">Add Text List</li>
-            <li class="unimplemented">Add to Text List</li>
-            <li class="unimplemented">Add to credits</li>
-            <li class="unimplemented">Add to store locations</li>
-            <li class="unimplemented">Add to insults</li>
-            <li class="unimplemented">Add to comms</li>
-            <li class="unimplemented">Card parsing</li>
-            <li class="unimplemented">Card Effect parsing</li>
-            <li class="unimplemented">Add Cards</li>
-            <li class="unimplemented">Add starting Auxilararies</li>
-            <li class="unimplemented">Encounter parsing</li>
-            <li class="unimplemented">Add Encounters</li>
-            <li class="unimplemented">Dongle parsing</li>
-            <li class="unimplemented">Add Dongles</li>
-            <li class="unimplemented">Add starting Flagship Dongles</li>
-            <li class="unimplemented">Add starting Commanders</li>
-            <li class="unimplemented">Fleet Upgrade Parsing</li>
-            <li class="unimplemented">Add Fleet Upgrades</li>
-            <li class="unimplemented">Add boss reward Fleet Upgrades</li>
-            <li class="unimplemented">Coordinate parsing</li>
-            <li class="unimplemented">Add Coordinates</li>
-        </ul>
-        <h2>Changelog</h2>
     </body>
 </html>

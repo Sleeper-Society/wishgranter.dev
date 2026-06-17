@@ -1,0 +1,92 @@
+body {
+    --background-color: #2121ff;
+    --foreground-color: #affafe;
+    --highlight-color: #ffda45;
+    --border-ui-color: var(--background-color);
+
+    color: var(--foreground-color);
+    font-family: Oxanium, sans-serif;
+
+    /* Source - https://stackoverflow.com/a/33948325
+  Posted by marsei
+  Retrieved 2026-06-15, License - CC BY-SA 3.0 */
+
+    background-color: black;
+    background-image:
+        radial-gradient(white, rgb(255 255 255 / 20%) 2px, transparent 40px),
+        radial-gradient(white, rgb(255 255 255 / 15%) 1px, transparent 30px),
+        radial-gradient(white, rgb(255 255 255 / 10%) 2px, transparent 40px),
+        radial-gradient(
+            rgb(255 255 255 / 40%),
+            rgb(255 255 255 / 10%) 2px,
+            transparent 30px
+        );
+    background-size:
+        550px 550px,
+        350px 350px,
+        250px 250px,
+        150px 150px;
+    background-position:
+        0 0,
+        40px 60px,
+        130px 270px,
+        70px 100px;
+}
+
+a {
+    color: var(--highlight-color);
+    fill: var(--highlight-color);
+}
+
+a:any-link img,
+a:any-link svg {
+    border-bottom: groove;
+    border-width: thin;
+    padding-bottom: 4px;
+}
+
+header {
+    background: linear-gradient(
+        180deg,
+        var(--border-ui-color) 0%,
+        var(--border-ui-color) 80%,
+        rgb(0 0 0 / 0%) 100%
+    );
+    margin: -8px;
+}
+
+header h1 {
+    margin-left: 4px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+header p {
+    margin-left: 8px;
+    margin-top: 0;
+}
+
+header nav menu {
+    display: flex;
+    padding-left: 16px;
+}
+
+header nav menu li {
+    flex-grow: 1;
+    list-style: none;
+}
+
+footer .planet {
+    position: fixed;
+    bottom: -25%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-color: var(--highlight-color);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+    height: 50%;
+    aspect-ratio: 1;
+    box-shadow: 0 0 64px yellow;
+    background-color: yellow;
+}

@@ -1,33 +1,21 @@
-li.unimplemented::before {
-  background-image: url("unimplemented.svg");
+body {
+    display: grid;
+    grid-auto-columns: 1fr 1fr;
 }
-li.flechette {
-  background-image: url("flechette.svg");
+
+header {
+    grid-column: 1 / 3;
 }
-li.verifying {
-  background-image: url("verifying.svg");
+
+h2 {
+    grid-row: 2;
 }
-li.complete {
-  background-image: url("complete.svg");
+
+p {
+    grid-row: 3;
+    display: flex;
 }
-li::before {
-  content: "";
-  background-size: 16px;
-  display: inline-block;
-  margin-right: 8px;
-  height: 16px;
-  width: 16px;
-}
-li {
-  list-style: none;
-}
-ul {
-  padding-left: 8px;
-}
-img {
-  max-width: 32px;
-  max-height: 32px;
-}
-p[date]::before {
-  content: attr(date) ":";
+
+p a {
+    margin: 4px;
 }
