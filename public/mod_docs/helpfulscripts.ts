@@ -5,9 +5,7 @@ interface projectData {
     }[];
 }
 
-//used in html
-//eslint-disable-next-line @typescript-eslint/no-unused-vars
-function commentCode0() {
+export function commentCode0() {
     const code0_file = ((document.getElementById("code0") as HTMLInputElement)
         .files ?? [])[0];
     const data_file = ((document.getElementById("data") as HTMLInputElement)

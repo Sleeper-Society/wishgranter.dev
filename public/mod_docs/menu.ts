@@ -1,4 +1,4 @@
-fetch("/docs/menu.html")
+fetch("/mod_docs/menu.html")
     .then((response) => {
         if (response.ok) {
             return response.text();

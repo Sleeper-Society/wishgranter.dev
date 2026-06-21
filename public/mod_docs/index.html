@@ -6,7 +6,10 @@
         <link rel="icon" href="/favicon.svg" />
         <script src="/header.js" type="module"></script>
         <script src="/mod_docs/menu.js" type="module"></script>
-        <script src="./helpfulscripts.js" type="module"></script>
+        <script type="module">
+            import { commentCode0 } from "./helpfulscripts.js";
+            window.commentCode0 = commentCode0;
+        </script>
     </head>
     <body>
         <h1>Getting Started</h1>
