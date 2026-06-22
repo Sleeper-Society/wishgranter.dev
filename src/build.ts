@@ -9,7 +9,7 @@ import { firefox, type Page } from "playwright";
 const out_path = "public";
 const scripts_path = "dist";
 const working_path = "src";
-const host = "localhost";
+const host = "127.0.0.1";
 const port = 8000;
 
 const mimeTypes = {
@@ -120,7 +120,8 @@ async function render_url(url: string, page: Page): Promise<Iterable<string>> {
         });
         return writeFile(path.join(out_path, url), file);
     });
-    await page.goto(`http://localhost:8000/${url}`);
+
+    await page.goto(`http://${host}:${port.toString()}/${url}`);
     // Wait for your initial dynamic JavaScript code to finish... typically this involves scripts being fetched and then those scripts doing something like fetching some data and rendering it. You would expect right after fetch the render would happen, so networkidle is usually enough
     await page.waitForLoadState("networkidle");
     const console_messages = await page.consoleMessages({
