@@ -1,5 +1,7 @@
 # NPM
 /node_modules/
+dist/
+public/
 # Typescript
 *.js
 *.map

@@ -17,11 +17,9 @@ fetch("/header.html")
         );
         document.body.append(footer.cloneNode(true));
 
-        Array.from(menu_html.head.getElementsByTagName("link"))
-            .filter((element) => element.getAttribute("rel") == "stylesheet")
-            .forEach((element) =>
-                document.head.append(element.cloneNode(true)),
-            );
+        Array.from(menu_html.head.getElementsByTagName("link")).forEach(
+            (element) => document.head.append(element.cloneNode(true)),
+        );
 
         Array.from(document.head.getElementsByTagName("script"))
             .filter((element) => element.getAttribute("src") == "/header.js")

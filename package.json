@@ -5,9 +5,11 @@
   "main": "dist/build.js",
   "type": "module",
   "scripts": {
-    "lint": "stylelint --fix public/**/*.css && eslint",
+    "lint": "stylelint --fix src/**/*.css && eslint",
     "test": "playwright test",
-    "build": "tsc",
+    "clean": "shx rm -r dist public",
+    "prebuild": "npm run clean",
+    "build": "tsc && node --enable-source-maps dist/build.js",
     "prepare": "husky"
   },
   "repository": {
