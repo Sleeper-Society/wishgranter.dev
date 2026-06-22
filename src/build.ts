@@ -36,25 +36,15 @@ async function runServer(callback: () => Promise<void> | void) {
             "req.header.origin",
         ); /* @dev First, read about security */
         if (!req.url) return;
-        // Determine MIME type from file extension
-        const ext = path
-            .extname(req.url)
-            .toLowerCase() as keyof typeof mimeTypes;
-        const contentType = mimeTypes[ext] || "application/octet-stream";
 
-        const fallbacks = [out_path, scripts_path, working_path];
+        const fallbacks = [out_path, scripts_path, working_path, "."];
         for (const fallback of fallbacks) {
             const file_path = path.join(fallback, req.url);
             if (!existsSync(file_path)) continue;
-            res.setHeader("Content-Type", contentType);
-            res.setHeader("X-Content-Type-Options", "nosniff"); // Prevents MIME sniffing attacks
-            res.writeHead(200);
-            const stream = createReadStream(file_path);
-            stream.pipe(res);
+            serveFile(res, file_path);
             return;
         }
-        res.writeHead(404, { "X-Content-Type-Options": "nosniff" });
-        res.end("File not found");
+        serve404(res);
     });
 
     server.listen(port, host, () => {
@@ -64,6 +54,26 @@ async function runServer(callback: () => Promise<void> | void) {
     });
     await callback();
     server.close();
+}
+
+function serveFile(
+    res: http.ServerResponse<http.IncomingMessage>,
+    file_path: string,
+) {
+    // Determine MIME type from file extension
+    const ext = path.extname(file_path).toLowerCase() as keyof typeof mimeTypes;
+    const contentType = mimeTypes[ext] || "application/octet-stream";
+
+    res.setHeader("Content-Type", contentType);
+    res.setHeader("X-Content-Type-Options", "nosniff"); // Prevents MIME sniffing attacks
+    res.writeHead(200);
+    const stream = createReadStream(file_path);
+    stream.pipe(res);
+}
+
+function serve404(res: http.ServerResponse<http.IncomingMessage>) {
+    res.writeHead(404, { "X-Content-Type-Options": "nosniff" });
+    res.end("File not found");
 }
 
 async function build() {
@@ -80,6 +90,7 @@ async function build() {
 
 async function processUrl(url: string, page: Page): Promise<Iterable<string>> {
     url = url.endsWith(path.sep) ? url + "index.html" : url;
+
     if (existsSync(path.join(out_path, url))) {
         return [];
     }
@@ -87,7 +98,9 @@ async function processUrl(url: string, page: Page): Promise<Iterable<string>> {
         return await render_url(url, page);
     const file_path = existsSync(path.join(scripts_path, url))
         ? path.join(scripts_path, url)
-        : path.join(working_path, url);
+        : existsSync(path.join(working_path, url))
+          ? path.join(working_path, url)
+          : path.join(".", url);
     if (!existsSync(file_path)) return [];
     await readFile(file_path).then(async (file) => {
         await mkdir(path.join(out_path, ...url.split(path.sep).slice(0, -1)), {

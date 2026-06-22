@@ -7,22 +7,22 @@
   "scripts": {
     "lint": "stylelint --fix src/**/*.css && eslint",
     "test": "playwright test",
-    "clean": "shx rm -r dist public",
+    "clean": "shx rm -rf dist public",
     "prebuild": "npm run clean",
-    "build": "tsc && node --enable-source-maps dist/build.js",
+    "build": "(tsc -p node_modules/wishgranter/ --noCheck & tsc) && node --enable-source-maps dist/build.js",
     "prepare": "husky"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/claire-aware/wishgranter.dev.git"
+    "url": "git+https://github.com/Sleeper-Society/wishgranter.dev.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "CC4.0-SA",
   "bugs": {
-    "url": "https://github.com/claire-aware/wishgranter.dev/issues"
+    "url": "https://github.com/Sleeper-Society/wishgranter.dev/issues"
   },
-  "homepage": "https://github.com/claire-aware/wishgranter.dev#readme",
+  "homepage": "https://github.com/Sleeper-Society/wishgranter.dev#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.60.0",
@@ -41,5 +41,8 @@
     "*.ts": "eslint --fix",
     "*.css": "stylelint --fix",
     "*.{ts,html,css}": "prettier --write"
+  },
+  "dependencies": {
+    "wishgranter": "github:Sleeper-Society/HDC-Wishgranter"
   }
 }
