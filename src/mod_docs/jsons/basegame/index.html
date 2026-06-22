@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Jsons</title>
+        <script src="/header.js" type="module"></script>
+        <script src="/mod_docs/menu.js" type="module"></script>
+        <link rel="stylesheet" href="/mod_docs/jsons/jsons.css" />
+    </head>
+    <body>
+        <h2 id="cards">cards.json</h2>
+        <code>extends Record&lt;string, Card&gt; </code>
+
+        <h3>CardEffect</h3>
+        <ul>
+            <li><code>effect_type: number</code></li>
+            <li class="optional"><code>effect_status: number</code></li>
+            <li class="optional"><code>effect_variant: number</code></li>
+            <li class="optional"><code>effect_power: number</code></li>
+            <li class="optional"><code>effect_anim: string</code></li>
+            <li class="optional"><code>effect_force_anim: number</code></li>
+            <li class="optional"><code>effect_cmd_id: string</code></li>
+            <li class="optional"><code>effect_cmd_comms: string</code></li>
+            <li class="optional"><code>effect_cmd_tier: number</code></li>
+            <li class="optional"><code>effect_cmd_ability: number</code></li>
+            <li class="optional"><code>effect_card_id: string</code></li>
+            <li class="optional"><code>effect_card_convert: string</code></li>
+            <li class="optional"><code>effect_card_list: string</code></li>
+            <li class="optional"><code>effect_card_text: string</code></li>
+            <li class="optional"><code>effect_up_list: string</code></li>
+            <li class="optional"><code>effect_status_target: number</code></li>
+        </ul>
+        <h3>Card</h3>
+        <code>extends Record&lt;`effect_${number}`, CardEffect&gt; </code>
+        <ul>
+            <li><code>name: string</code></li>
+            <li><code>data: string</code></li>
+            <li><code>dmg: number</code></li>
+            <li><code>faction: string</code></li>
+            <li><code>por_back: `cp_${string}`</code></li>
+            <li class="optional"><code>por_angle: number</code></li>
+            <li class="optional"><code>por_scale: number</code></li>
+            <li class="optional"><code>por_repos_rate: number</code></li>
+            <li class="optional"><code>por_repos_range: number</code></li>
+            <li class="optional"><code>attacks: number</code></li>
+            <li class="optional"><code>effect_count: number</code></li>
+            <li class="optional"><code>dc_cond: string</code></li>
+            <li class="optional"><code>delayed_effect_time: number</code></li>
+            <li class="optional"><code>target_update_delay: number</code></li>
+        </ul>
+        <h3>PlayerCard</h3>
+        <code>extends Card</code>
+        <ul>
+            <li><code>store_loc: string</code></li>
+            <li class="optional"><code>deck_group: number</code></li>
+        </ul>
+        <h3>Unit</h3>
+        <code>extends Card </code>
+        <ul>
+            <li><code>type: 1</code></li>
+            <li><code>hp: number</code></li>
+            <li><code>size: 1 | 2 | 3</code></li>
+            <li><code>timer: number</code></li>
+            <li><code>por_obj: `obj_unit_${string}`</code></li>
+            <li class="optional"><code>srm_drop: number</code></li>
+            <li class="optional"><code>jump_fx: 1 | 2 | 3 | 4</code></li>
+            <li class="optional"><code>gun_mounts: number</code></li>
+            <li class="optional">
+                <code>death_fx_power: 1 | 2 | 3 | 4 | 5</code>
+            </li>
+            <li class="optional"><code>death_total: 1</code></li>
+            <li class="optional"><code>death_time_max: number</code></li>
+            <li class="optional"><code>comms: string</code></li>
+        </ul>
+
+        <h3>EnemeyUnit</h3>
+        <code>extends Unit</code>
+        <ul>
+            <li><code>por_obj: `obj_unit_hos`</code></li>
+
+            <li class="optional"><code>boss_up: string</code></li>
+
+            <li class="optional"><code>name_gp: string</code></li>
+
+            <li class="optional"><code>up_gp: string</code></li>
+        </ul>
+
+        <h3>PlayerUnit</h3>
+        <code>extends PlayerCard, Unit</code>
+
+        <h3>Ability</h3>
+        <code>extends PlayerCard </code>
+        <ul>
+            <li><code>type: 2</code></li>
+
+            <li><code>por_obj: `obj_ab_${string}`</code></li>
+
+            <li><code>ab_target: number</code></li>
+
+            <li class="optional"><code>ab_type: number</code></li>
+
+            <li class="optional"><code>ab_attach_mount_type: number</code></li>
+
+            <li class="optional"><code>ab_attach_anim: string</code></li>
+
+            <li><code>ab_comms_hos?: `ab_${string}_hos`</code></li>
+
+            <li><code>ab_comms_ally?: `ab_${string}_ally`</code></li>
+
+            <li><code>ab_comms_pl?: `ab_${string}_pl`</code></li>
+
+            <li class="optional"><code>speaker: string</code></li>
+        </ul>
+
+        <h2 id="comms">comms.json</h2>
+        <h2 id="encounters">encounters.json</h2>
+        <h2 id="loot_list_up">loot_list_up.json</h2>
+        <h2 id="text_lists">text_lists.json</h2>
+        <h2 id="tutorials">tutorials.json</h2>
+        <h2 id="upgrades">upgrades.json</h2>
+        <h2 id="cloud_lables">cloud_lables.json</h2>
+        <h2 id="credits">credits.json</h2>
+        <h2 id="loot_list_card">loot_list_card.json</h2>
+        <h2 id="sp_up">sp_up.json</h2>
+        <h2 id="tooltips">tooltips.json</h2>
+        <h2 id="unlock_cond">unlock_cond.json</h2>
+    </body>
+</html>

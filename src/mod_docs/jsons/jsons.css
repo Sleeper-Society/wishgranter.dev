@@ -1,0 +1,22 @@
+h3:has(+ code),
+h2:has(+ code) {
+    display: inline;
+    margin-right: 8px;
+}
+
+h3 + code {
+    display: inline;
+}
+
+h3 + code:has(+ h3) {
+    display: block;
+    margin-left: 16px;
+}
+
+li {
+    list-style: none;
+}
+
+li:not(.optional)::before {
+    content: "*";
+}
