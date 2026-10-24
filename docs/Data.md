@@ -1,3 +1,8 @@
+---
+eleventyNavigation:
+    key: Data
+---
+
 # Data.json
 
 `data.js` is a base game file that is essentially a json. As such, Wishgranter allows to to modify it as a json.

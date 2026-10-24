@@ -1,3 +1,7 @@
+---
+title: Documentation
+---
+
 # HDC Modding Wiki
 
 This wiki is publicly editable. If you have testing or information about the .asar to contribute, please do so!
@@ -9,6 +13,6 @@ This wiki is publicly editable. If you have testing or information about the .as
 ## Current objectives
 
 - Discover more internal IDs for keywords/effects
-  - Discover what combinations of keywords/effects are possible
+- Discover what combinations of keywords/effects are possible
 - Develop automated tools for card addition, patching cards.json/data.js
-  - Develop ways to distribute mods to others, or patch distributed mods into game
+- Develop ways to distribute mods to others, or patch distributed mods into game

@@ -1,3 +1,9 @@
+---
+eleventyNavigation:
+    key: Esoterica
+    parent: Cards
+---
+
 # Weird and obscure interactions between keywords, card and mechanics
 
 ## Complication cards target the Megaship

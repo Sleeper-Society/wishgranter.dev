@@ -1,3 +1,8 @@
+---
+eleventyNavigation:
+    key: Modifying Code 0
+---
+
 # On The Creation Of Code Mods
 
 Mods can include a `code0adjustments.js` file.
@@ -20,6 +25,55 @@ for all but the most complicated mods.
 
 Code zero refers to variables via index, which is unhelpful to human readers.
 This script adds comments that give those variables names.
+
+<script type="module">
+    import { commentCode0 } from "/node_modules/wishgranter/dist/reimplementations/code0Commenter.js";
+    window.commentCode0 = () => {
+        const code0_file = (document.getElementById("code0").files ??
+            [])[0];
+        const data_file = (document.getElementById("data").files ??
+            [])[0];
+
+        if (!code0_file || !data_file) return;
+        //Used as global in Data.js
+        //eslint-disable-next-line no-var
+        var gdjs = {};
+        const code0_file_reader = new FileReader();
+        const data_file_reader = new FileReader();
+        code0_file_reader.addEventListener("load", () => {
+            if (data_file_reader.readyState == FileReader.DONE) {
+                downloadCode0(
+                    code0_file_reader.result,
+                    gdjs.projectData,
+                );
+            }
+        });
+        data_file_reader.addEventListener("load", () => {
+            eval(data_file_reader.result);
+            if (code0_file_reader.readyState == FileReader.DONE) {
+                downloadCode0(
+                    code0_file_reader.result,
+                    gdjs.projectData,
+                );
+            }
+        });
+        code0_file_reader.readAsText(code0_file);
+        data_file_reader.readAsText(data_file);
+    };
+
+    function downloadCode0(code0, hyperspace_data) {
+        const blob = new Blob([commentCode0(code0, hyperspace_data)], {
+            type: ".js",
+        });
+
+        const elem = window.document.createElement("a");
+        elem.href = window.URL.createObjectURL(blob);
+        elem.download = "code0.js";
+        document.body.appendChild(elem);
+        elem.click();
+        document.body.removeChild(elem);
+    }
+</script>
 
 <label for="code0">Code0.js:</label>
 <input type="file" id="code0" accept=".js" />

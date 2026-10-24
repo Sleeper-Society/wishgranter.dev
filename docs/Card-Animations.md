@@ -1,3 +1,9 @@
+---
+eleventyNavigation:
+    key: Card Animations
+    parent: Jsons
+---
+
 # card_animations.json
 
 ## Examples

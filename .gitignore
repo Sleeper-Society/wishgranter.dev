@@ -1,10 +1,5 @@
 # NPM
 /node_modules/
-dist/
-public/
-# Typescript
-*.js
-*.map
-*.d*
+_site/
 # Obsidian
 **.obsidian

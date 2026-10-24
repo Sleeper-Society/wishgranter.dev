@@ -1,3 +1,8 @@
+---
+eleventyNavigation:
+    key: Lists
+---
+
 # Lists of Things
 
 export type Comms = Record<string, Record<`text_${number}`, string[]> | string>;

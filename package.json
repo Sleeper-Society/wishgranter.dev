@@ -1,59 +1,44 @@
 {
-  "name": "wishgranter.dev",
-  "version": "1.0.0",
-  "description": "",
-  "main": "dist/build.js",
-  "type": "module",
-  "scripts": {
-    "lint": "stylelint --fix src/**/*.css && eslint",
-    "clean": "shx rm -rf dist public",
-    "prebuild": "npm run clean",
-    "build": "(tsc -p node_modules/wishgranter/ --noCheck & tsc) && node --enable-source-maps dist/build.js",
-    "preview": "(tsc -p node_modules/wishgranter/ --noCheck & tsc) && node --enable-source-maps dist/preview.js",
-    "prepare": "husky"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sleeper-Society/wishgranter.dev.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "CC4.0-SA",
-  "bugs": {
-    "url": "https://github.com/Sleeper-Society/wishgranter.dev/issues"
-  },
-  "homepage": "https://github.com/Sleeper-Society/wishgranter.dev#readme",
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^25.9.3",
-    "@types/remark-heading-id": "^1.0.0",
-    "husky": "^9.1.7",
-    "jsdom": "^30.0.1",
-    "lint-staged": "^17.0.7",
-    "prettier": "^3.8.4",
-    "shx": "^0.4.0",
-    "stylelint": "^17.13.0",
-    "stylelint-config-standard": "^40.0.0",
-    "typescript": "^6.0.3",
-    "typescript-eslint": "^8.61.1",
-    "wishgranter": "github:Sleeper-Society/HDC-Wishgranter"
-  },
-  "lint-staged": {
-    "*.{ts,md,yml}": "eslint --fix",
-    "*.css": "stylelint --fix",
-    "*.{ts,html,css,md,yml}": "prettier --write"
-  },
-  "dependencies": {
-    "@types/jsdom": "^28.0.3",
-    "eslint-plugin-markdownlint": "^0.10.1",
-    "eslint-plugin-yml": "^3.8.1",
-    "micromark-extension-gfm": "^3.0.0",
-    "rehype-raw": "^7.0.0",
-    "rehype-stringify": "^10.0.1",
-    "remark-api": "^1.1.0",
-    "remark-gfm": "^4.0.1",
-    "remark-heading-id": "^1.0.1",
-    "remark-parse": "^11.0.0",
-    "remark-rehype": "^11.1.2"
-  }
+    "name": "wishgranter.dev",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/build.js",
+    "type": "module",
+    "scripts": {
+        "lint": "stylelint --fix **.css",
+        "clean": "shx rm -rf dist public",
+        "prebuild": "npm run clean",
+        "build": "tsc -p node_modules/wishgranter/ --noCheck && eleventy",
+        "preview": "tsc -p node_modules/wishgranter/ --noCheck && eleventy --serve",
+        "prepare": "husky"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Sleeper-Society/wishgranter.dev.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "CC4.0-SA",
+    "bugs": {
+        "url": "https://github.com/Sleeper-Society/wishgranter.dev/issues"
+    },
+    "homepage": "https://github.com/Sleeper-Society/wishgranter.dev#readme",
+    "devDependencies": {
+        "@11ty/eleventy": "^3.1.7",
+        "@11ty/eleventy-navigation": "^1.0.5",
+        "@types/node": "^25.9.3",
+        "husky": "^9.1.7",
+        "lint-staged": "^17.0.7",
+        "prettier": "^3.8.4",
+        "shx": "^0.4.0",
+        "stylelint": "^17.13.0",
+        "stylelint-config-standard": "^40.0.0",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.61.1",
+        "wishgranter": "github:Sleeper-Society/HDC-Wishgranter"
+    },
+    "lint-staged": {
+        "*.css": "stylelint --fix",
+        "*.{ts,html,css,md,yml}": "prettier --write"
+    }
 }

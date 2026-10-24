@@ -1,3 +1,8 @@
+---
+eleventyNavigation:
+    key: Cards
+---
+
 # Cards.json
 
 Simple json table defining fundamental stats and keywords. New entries here will be functional but not appear in game unless forced, or use correct sprites without corresponding entries in data.js.
@@ -64,95 +69,85 @@ _NOTE: most of these are not required! only include when relevant!_
   }
   export interface Card extends Record<`effect*${number}`, CardEffect> {
   /\*\*
-  - Name as it appears in game
+    - Name as it appears in game
       \*/
       name: string;
       /\*\*
-  - Flavor text as it appears in the data cloud or on right click. "0" for none.
+    - Flavor text as it appears in the data cloud or on right click. "0" for none.
       \*/
       data: string;
       dmg: number;
       faction: string;
       por*obj: `obj*${"unit" | "ab"}_${string}`;
       /\*\*
-  - Background to render sprite on when card is in hand or deck
+    - Background to render sprite on when card is in hand or deck
       \*/
       por*back: `cp*${string}`;
-      por_angle?: number;
-      por_scale?: number;
-      por_repos_rate?: number;
-      por_repos_range?: number;
-      attacks?: number;
-      /\*\*
-  - If more effects are defined then specified, those effects will not be used. Good for comments.
-      \*/
-      effect_count?: number;
-      /\*\*
-  - Unlock Condition
-      \*/
-      dc_cond?: string;
-      delayed_effect_time?: number;
-      target_update_delay?: number;
-      }
-      export interface PlayerCard extends Card {
-      /\*\*
-  - Id of text list to pull from when this card appears in shops / escalation mechanism
-      _/
-      store_loc: string;
-      /\*\*Priority of card when in deck view. Lower numbers appear first _/
-      deck_group?: number;
-      }
-      export interface Unit extends Card {
-      /\*\*
-  - How the game knows this card can be placed on the board
-      \*/
-      type: 1;
-      /\*\*
-  - Base hull
-      \*/
-      hp: number;
-      /\*\*
-  - How much of an orbit this unit takes up
-      \*/
-      size: 1 | 2 | 3;
-      timer: number;
-      por*obj: `obj_unit*${string}`;
-      srm_drop?: number;
-      jump_fx?: 1 | 2 | 3 | 4;
-      gun_mounts?: number;
-      death_fx_power?: 1 | 2 | 3 | 4 | 5;
-      death_total?: 1;
-      death_time_max?: number;
-      /\*\*
-  - prefix to add to events to get the ids of entries in Comms
-      \*/
-      comms?: string;
-      }
-      export interface EnemeyUnit extends Unit {
-      por_obj: `obj_unit_hos`;
-      /\*\*
-  - If unit is a boss, this dongle will be applied to
-      \*/
-      boss_up?: string;
-      /\*\*
-  - Name as it appears in endless mode
-      \*/
-      name_gp?: string;
-      /\*\*
-  - Id of dongle to apply in endless mode
-      \*/
-      up*gp?: string;
-      }
-      export interface PlayerUnit extends PlayerCard, Unit {}
-      export interface Ability extends PlayerCard {
-      type: 2;
-      por_obj: `obj_ab*${string}`;
-    ab_target: number;
-    ab_type?: number;
-    ab_attach_mount_type?: number;
-    ab_attach_anim?: string;
-    ab_comms_hos?: `ab_${string}_hos`;
-ab_comms_ally?: `ab_${string}_ally`;
-    ab_comms_pl?: `ab_${string}\_pl`;
-      speaker?: string;
-      }
+  por_angle?: number;
+  por_scale?: number;
+  por_repos_rate?: number;
+  por_repos_range?: number;
+  attacks?: number;
+  /\*\* - If more effects are defined then specified, those effects will not be used. Good for comments.
+  \*/
+  effect_count?: number;
+  /\*\* - Unlock Condition
+  \*/
+  dc_cond?: string;
+  delayed_effect_time?: number;
+  target_update_delay?: number;
+  }
+  export interface PlayerCard extends Card {
+  /\*\* - Id of text list to pull from when this card appears in shops / escalation mechanism
+  _/
+  store*loc: string;
+  /\*\*Priority of card when in deck view. Lower numbers appear first */
+  deck*group?: number;
+  }
+  export interface Unit extends Card {
+  /\*\* - How the game knows this card can be placed on the board
+  \*/
+  type: 1;
+  /\*\* - Base hull
+  \*/
+  hp: number;
+  /\*\* - How much of an orbit this unit takes up
+  \*/
+  size: 1 | 2 | 3;
+  timer: number;
+  por*obj: `obj_unit*${string}`;
+  srm*drop?: number;
+  jump_fx?: 1 | 2 | 3 | 4;
+  gun_mounts?: number;
+  death_fx_power?: 1 | 2 | 3 | 4 | 5;
+  death_total?: 1;
+  death_time_max?: number;
+  /\*\* - prefix to add to events to get the ids of entries in Comms
+  \*/
+  comms?: string;
+  }
+  export interface EnemeyUnit extends Unit {
+  por_obj: `obj_unit_hos`;
+  /\*\* - If unit is a boss, this dongle will be applied to
+  \*/
+  boss_up?: string;
+  /\*\* - Name as it appears in endless mode
+  \*/
+  name_gp?: string;
+  /\*\* - Id of dongle to apply in endless mode
+  \*/
+  up*gp?: string;
+  }
+  export interface PlayerUnit extends PlayerCard, Unit {}
+  export interface Ability extends PlayerCard {
+  type: 2;
+  por*obj: `obj_ab*${string}`;
+ab_target: number;
+ab_type?: number;
+ab_attach_mount_type?: number;
+ab_attach_anim?: string;
+ab_comms_hos?: `ab*${string}\_hos`;
+  ab_comms_ally?: `ab\*${string}\_ally`;
+ab_comms_pl?: `ab\*${string}\_pl`;
+  speaker?: string;
+  }

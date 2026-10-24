@@ -1,3 +1,8 @@
+---
+eleventyNavigation:
+    key: "Developer Q&A"
+---
+
 # Developer Q&A
 
 In early 2026, Sleeper Games did a modding Q&A.

@@ -1,28 +1,22 @@
 {
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "module": "nodenext",
-    "target": "esnext",
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "node"
-    ],
-    "sourceMap": true,
-    "allowJs": false,
-    "checkJs": false,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "strict": true,
-    "noUncheckedSideEffectImports": true,
-    "rewriteRelativeImportExtensions": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "**/*",
-    "**/.level.ts"
-  ]
+    "compilerOptions": {
+        "rootDir": ".",
+        "outDir": "_site",
+        "module": "nodenext",
+        "target": "esnext",
+        "lib": ["esnext", "dom"],
+        "types": ["node"],
+        "sourceMap": true,
+        "allowJs": false,
+        "checkJs": false,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "strict": true,
+        "noUncheckedSideEffectImports": true,
+        "rewriteRelativeImportExtensions": true,
+        "skipLibCheck": true
+    },
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.61.1",
+    "include": ["**.ts"]
 }

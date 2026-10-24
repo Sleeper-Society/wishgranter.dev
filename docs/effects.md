@@ -1,3 +1,9 @@
+---
+eleventyNavigation:
+    key: Card Effects
+    parent: Cards
+---
+
 # Card Effects
 
 NOTE! This page is actively under construction: See new developments in [Developer Advice](/docs/Developer-Q-&-A#card-effects)
